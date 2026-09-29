@@ -33,8 +33,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.pokemonsandbox.ui.screens.AllPokemon
-import com.example.pokemonsandbox.ui.screens.SearchPokemon
+import com.example.pokemonsandbox.ui.Navigation
 import com.example.pokemonsandbox.ui.theme.PokemonSandboxTheme
 
 class MainActivity : ComponentActivity() {
@@ -43,12 +42,8 @@ class MainActivity : ComponentActivity() {
         enableEdgeToEdge()
         setContent {
             PokemonSandboxTheme {
-                Scaffold( modifier = Modifier.fillMaxSize() ) { innerPadding ->
-
-                    //SearchPokemon(innerPadding)
-
-                    AllPokemon(innerPadding)
-                }
+                // Scaffold with app bars and navigation
+                Navigation()
             }
         }
     }
