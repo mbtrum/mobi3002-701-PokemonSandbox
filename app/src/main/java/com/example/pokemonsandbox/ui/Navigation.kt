@@ -22,10 +22,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.example.pokemonsandbox.MainViewModel
 import com.example.pokemonsandbox.R
 import com.example.pokemonsandbox.ui.screens.FavoritesScreen
 import com.example.pokemonsandbox.ui.screens.SearchScreen
@@ -36,6 +38,9 @@ fun Navigation() {
 
     val navController = rememberNavController()
     var selectedIndex by remember { mutableIntStateOf(0) } // default set to 0
+
+    // Initialize view model in one place, and pass into the different screens (shared view model)
+    val viewModel: MainViewModel = viewModel()
 
     Scaffold(
         topBar = {
@@ -104,10 +109,10 @@ fun Navigation() {
             modifier = Modifier.padding(innerPadding)
         ) {
             composable(route = "search") {
-                SearchScreen()
+                SearchScreen(viewModel)
             }
             composable(route = "favorites") {
-                FavoritesScreen()
+                FavoritesScreen(viewModel)
             }
         }
     }
