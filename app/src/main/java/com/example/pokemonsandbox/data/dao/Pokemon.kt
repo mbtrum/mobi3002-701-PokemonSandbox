@@ -1,4 +1,6 @@
-package com.example.pokemonsandbox.data
+package com.example.pokemonsandbox.data.dao
+
+import com.google.gson.annotations.SerializedName
 
 data class Pokemon(
     val id: Int,
@@ -10,11 +12,12 @@ data class Pokemon(
 )
 
 data class Sprites (
-    val frontDefault: String // json: "front_default"
+    @SerializedName("front_default") val frontDefault: String,
+    @SerializedName("back_default") val backDefault: String,
 )
 
 data class Abilities(
-    val isHidden: Boolean, // json: "is_hidden"
+    @SerializedName("is_hidden") val isHidden: Boolean,
     val slot: Int,
     val ability: Ability
 )

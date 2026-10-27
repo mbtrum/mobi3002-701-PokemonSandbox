@@ -8,17 +8,9 @@ import com.example.pokemonsandbox.MainViewModel
 
 @Composable
 fun FavoritesScreen(viewModel: MainViewModel) {
-    val pokemonSearchName = viewModel.pokemonSearchName
+    val pokemon = viewModel.pokemon
 
-    Column() {
-        Button(
-            onClick = {
-                viewModel.searchPokemon("Ditto")
-            }
-        ) {
-            Text("Search Ditto")
-        }
-
-        Text("Search value: $pokemonSearchName")
+    pokemon?.let {
+        Text("You searched for ${it.name}")
     }
 }
